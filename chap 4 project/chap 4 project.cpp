@@ -2,10 +2,59 @@
 //
 
 #include <iostream>
+#include <iomanip>
+using namespace std;
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    double weight, rate, miles, total;
+
+    cout << "What is the weight of your package, must range from .1 to 20kg max\n";
+    cin >> weight;
+
+    if (weight >= .1 && weight <= 20)
+    {
+        cout << "\nHow many miles need to be shipped, must be at least 10 and no more than 3,000\n";
+        cin >> miles;
+        if (miles >= 10 && miles <= 3000)
+        {
+            if (weight >= .1 && weight <= 2)
+            {
+                rate = 1.1 / 500;
+                total = rate * miles;
+                cout << showpoint << fixed << setprecision(2);
+                cout << "\nyour total is " << total;
+            }
+            else if (weight > 2 && weight <= 6)
+            {
+                rate = 2.2 / 500;
+                total = rate * miles;
+                cout << showpoint << fixed << setprecision(2);
+                cout << "\nyour total is " << total;
+            }
+            else if (weight > 6 && weight <= 10)
+            {
+                rate = 3.7 / 500 ;
+                total = rate * miles;
+                cout << showpoint << fixed << setprecision(2);
+                cout << "\nyour total is " << total;
+            }
+            else if (weight > 10 && weight <= 20)
+            {
+                rate = 4.8 / 500;
+                total = rate * miles;
+                cout << showpoint << fixed << setprecision(2);
+                cout << "your total is " << total;
+            }
+            else
+                cout << "Not valid, try again.";
+        }
+        else
+            cout << "Not valid, try again";
+
+    }
+    else
+        cout << "not valid try again";
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
