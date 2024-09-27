@@ -15,7 +15,7 @@ int main()
 
     month >= 1 && month <= 12 ? cout << "Enter a year after 1775\n" : cout << "try again";
     cin >> year;
-    //year <= 1775 ? cout << "Please retry the program, not valid\n" : cout << "thank you\n"; 
+    
     if (year <= 1775)
     {
         cout << "Please retry the program, not valid\n";
