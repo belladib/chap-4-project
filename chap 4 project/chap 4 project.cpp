@@ -1,69 +1,52 @@
-// chap 4 project.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
+// calculates the freight
 
 #include <iostream>
 #include <iomanip>
 using namespace std;
 
-int main()
-{
+int main() {
     double weight, rate, miles, total;
 
-    cout << "What is the weight of your package, must range from .1 to 20kg max\n";
+    // Prompt for package weight
+    cout << "Enter the weight of your package (0.1 to 20 kg): ";
     cin >> weight;
 
-    if (weight >= .1 && weight <= 20)
-    {
-        cout << "\nHow many miles need to be shipped, must be at least 10 and no more than 3,000\n";
-        cin >> miles;
-        if (miles >= 10 && miles <= 3000)
-        {
-            if (weight >= .1 && weight <= 2)
-            {
-                rate = 1.1 / 500;
-                total = rate * miles;
-                cout << showpoint << fixed << setprecision(2);
-                cout << "\nyour total is " << total;
-            }
-            else if (weight > 2 && weight <= 6)
-            {
-                rate = 2.2 / 500;
-                total = rate * miles;
-                cout << showpoint << fixed << setprecision(2);
-                cout << "\nyour total is " << total;
-            }
-            else if (weight > 6 && weight <= 10)
-            {
-                rate = 3.7 / 500 ;
-                total = rate * miles;
-                cout << showpoint << fixed << setprecision(2);
-                cout << "\nyour total is " << total;
-            }
-            else if (weight > 10 && weight <= 20)
-            {
-                rate = 4.8 / 500;
-                total = rate * miles;
-                cout << showpoint << fixed << setprecision(2);
-                cout << "your total is " << total;
-            }
-            else
-                cout << "Not valid, try again.";
-        }
-        else
-            cout << "Not valid, try again";
-
+    // Validate weight
+    if (weight < 0.1 || weight > 20) {
+        cout << "Invalid weight. Must be between 0.1 and 20 kg. Try again.\n";
+        return 1; // Exit the program due to invalid input
     }
-    else
-        cout << "not valid try again";
+
+    // Prompt for shipping miles
+    cout << "Enter the miles to be shipped (10 to 3000): ";
+    cin >> miles;
+
+    // Validate miles
+    if (miles < 10 || miles > 3000) {
+        cout << "Invalid miles. Must be between 10 and 3000. Try again.\n";
+        return 1; // Exit the program due to invalid input
+    }
+
+    // Determine the rate based on weight
+    if (weight <= 2) {
+        rate = 1.1 / 500;
+    }
+    else if (weight <= 6) {
+        rate = 2.2 / 500;
+    }
+    else if (weight <= 10) {
+        rate = 3.7 / 500;
+    }
+    else { // weight > 10
+        rate = 4.8 / 500;
+    }
+
+    // Calculate total shipping cost
+    total = rate * miles;
+
+    // Output the total cost formatted to two decimal places
+    cout << showpoint << fixed << setprecision(2);
+    cout << "Your total shipping cost is: $" << total << endl;
+
+    return 0; // Successful termination
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
